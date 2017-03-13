@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.icu.text.SimpleDateFormat;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
@@ -16,11 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
+
+import static com.example.tony.payday.R.drawable.ic_business;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,18 +34,27 @@ public class MainActivity extends AppCompatActivity {
     String balance;
     TextView funds;
     ProgressBar bar;
+    String balancetext;
+    Drawable icon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
         setSupportActionBar(toolbar);
+        //drawing logo on top
+        ImageView bilde = (ImageView) findViewById(R.id.bilde);
+        icon = getDrawable(R.drawable.ic_business);
+        bilde.setImageDrawable(icon);
+        //getting balance from sharedpref
         getBankFromPref();
         bar = (ProgressBar) findViewById(R.id.progressBar);
         setNewMax(Integer.parseInt(maxbar));
         Log.v("balance:", balance);
+        //setting funds
         funds = (TextView) findViewById(R.id.funds_view);
-        funds.setText(balance + ",-");
+        balancetext = balance + ",-";
+        funds.setText(balancetext);
         Thread t = new Thread() {
 
             @Override
@@ -248,7 +261,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void updateFunds(){
         getBankFromPref();
-        funds.setText(balance);
+        balancetext = balance + ",-";
+        funds.setText(balancetext);
         bar.setProgress(Integer.parseInt(balance));
     }
     public void setNewMax(int max){
