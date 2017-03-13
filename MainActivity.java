@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setNewMax(Integer.parseInt(maxbar));
         Log.v("balance:", balance);
         funds = (TextView) findViewById(R.id.funds_view);
-        funds.setText(balance);
+        funds.setText(balance + ",-");
         Thread t = new Thread() {
 
             @Override
