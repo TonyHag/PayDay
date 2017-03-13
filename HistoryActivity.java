@@ -54,10 +54,11 @@ public class HistoryActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         stringlist = preferences.getString("list", "");
         ArrayList<History> hlist = new ArrayList<History>();
+        //splits string into array
         if (!stringlist.equals("")) {
             ArrayList<String> list1 = new ArrayList<String>(Arrays.asList(stringlist.split(",")));
 
-
+        // splits array into the three values, makes history objects and plots them in an ArrayList<History>
             for (String item : list1) {
                 String a; // name
                 String b; // date
