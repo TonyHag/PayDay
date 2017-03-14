@@ -3,12 +3,14 @@ package com.example.tony.payday;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class HistoryActivity extends AppCompatActivity {
     ArrayList<History> list;
     String stringlist;
     Toolbar toolbar;
+    Drawable icon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,9 @@ public class HistoryActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
         setSupportActionBar(toolbar);
+        ImageView bilde = (ImageView) findViewById(R.id.bilde);
+        icon = getDrawable(R.drawable.ic_business);
+        bilde.setImageDrawable(icon);
         initListView();
 
     }

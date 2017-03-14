@@ -24,5 +24,6 @@ public class PreMainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, InitialSetupActivity.class);
             startActivity(intent);
         }
+        finish();
     }
 }
